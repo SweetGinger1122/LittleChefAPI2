@@ -1,0 +1,50 @@
+[
+  {
+    "companion_id": "16001",
+    "rarity_id": "15002",
+    "reduce_cooking_time": 0,
+    "add_waiting_time": 2,
+    "add_bonus_point": 0,
+    "item_id": "12003"
+  },
+  {
+    "companion_id": "16002",
+    "rarity_id": "15001",
+    "reduce_cooking_time": 0,
+    "add_waiting_time": 0,
+    "add_bonus_point": 1,
+    "item_id": "12004"
+  },
+  {
+    "companion_id": "16003",
+    "rarity_id": "15002",
+    "reduce_cooking_time": 2,
+    "add_waiting_time": 0,
+    "add_bonus_point": 0,
+    "item_id": "12005"
+  },
+  {
+    "companion_id": "16004",
+    "rarity_id": "15003",
+    "reduce_cooking_time": 2,
+    "add_waiting_time": 0,
+    "add_bonus_point": 2,
+    "item_id": "12006"
+  },
+  {
+    "companion_id": "16005",
+    "rarity_id": "15004",
+    "reduce_cooking_time": 3,
+    "add_waiting_time": 2,
+    "add_bonus_point": 0,
+    "item_id": "12012"
+  },
+  {
+    "companion_id": "16006",
+    "rarity_id": "15005",
+    "reduce_cooking_time": 3,
+    "add_waiting_time": 2,
+    "add_bonus_point": 5,
+    "item_id": "12003"
+  }
+]

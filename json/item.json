@@ -1,0 +1,81 @@
+[
+    {
+      "item_id": 12001,
+      "item_name": "Golden Timer",
+      "item_description": "Slows down time before food burns, giving you a chance to save every dish.",
+      "item_type_id": 11001
+    },
+    {
+      "item_id": 12002,
+      "item_name": "Double Exp",
+      "item_description": "Gain x2 Experience poin when the stage is done.",
+      "item_type_id": 11001
+    },
+    {
+      "item_id": 12003,
+      "item_name": "Chicky Whisk***",
+      "item_description": "A tiny chick with a big dream helps increase waiting time by cheering you on while you cook!",
+      "item_type_id": 11003
+    },
+    {
+      "item_id": 12004,
+      "item_name": "Cappy the Cookabara",
+      "item_description": "A gentle capybara who loves kitchen heat and happy vibes. Cappy boosts your cooking performance with calm energy and adorable focus.",
+      "item_type_id": 11003
+    },
+    {
+      "item_id": 12005,
+      "item_name": "Mimi Quikpaw",
+      "item_description": "A cheerful little cat who zips around the kitchen, helping dishes cook faster.",
+      "item_type_id": 11003
+    },
+    {
+      "item_id": 12006,
+      "item_name": "Poko Keroro",
+      "item_description": "A tiny keroro of charm, giving you more customer time and quicker cooking!",
+      "item_type_id": 11003
+    },
+    {
+      "item_id": 12007,
+      "item_name": "Coin",
+      "item_description": "Currency earned from completing stages.",
+      "item_type_id": 11004
+    },
+    {
+      "item_id": 12008,
+      "item_name": "Candy",
+      "item_description": "Currency earned from duplicates and gacha rolls.",
+      "item_type_id": 11004
+    },
+    {
+      "item_id": 12009,
+      "item_name": "Jelly",
+      "item_description": "Currency earned from completing stages or purchasable at the Jelly Shop.",
+      "item_type_id": 11004
+    },
+    {
+      "item_id": 12010,
+      "item_name": "Blooming Vase",
+      "item_description": "A charming flower vase that brightens any kitchen corner and adds a warm, cozy atmosphere to your cooking space.",
+      "item_type_id": 11002
+    },
+    {
+      "item_id": 12011,
+      "item_name": "Cozy Glow Lamp",
+      "item_description": "A soft, warm lamp that lights up your kitchen with a gentle glow, making every cooking moment feel calm and comforting.",
+      "item_type_id": 11002
+    },
+    {
+      "item_id": 12012,
+      "item_name": "Lottie the Helper",
+      "item_description": "A sweet axolotl who makes cooking faster and helps customers wait calmly with her warm, friendly aura.",
+      "item_type_id": 11003
+    },
+    {
+      "item_id": 12013,
+      "item_name": "Mistyshine",
+      "item_description": "A dreamy unicorn who speeds up meals, soothes customers, and rewards you with magical bonus points.",
+      "item_type_id": 11003
+    }
+
+  ]

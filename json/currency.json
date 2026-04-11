@@ -1,0 +1,5 @@
+[
+    {"currency_id" : 14001, "currency_name": "candy" },
+    {"currency_id" : 14002, "currency_name": "jelly" },
+    {"currency_id" : 14003, "currency_name": "coin" }
+]

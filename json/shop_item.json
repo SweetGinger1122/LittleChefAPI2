@@ -1,0 +1,8 @@
+[
+  { "shop_type_id": 13003, "item_id": 12006, "price": 2500, "currency_id": 14001 },
+  { "shop_type_id": 13003, "item_id": 12005, "price": 1500, "currency_id": 14001 },
+  { "shop_type_id": 13003, "item_id": 12013, "price": 5000, "currency_id": 14001 },
+  { "shop_type_id": 13003, "item_id": 12003, "price": 2500, "currency_id": 14001 },
+  { "shop_type_id": 13003, "item_id": 12004, "price": 1500, "currency_id": 14001 },
+  { "shop_type_id": 13003, "item_id": 12012, "price": 2500, "currency_id": 14001 }
+]
