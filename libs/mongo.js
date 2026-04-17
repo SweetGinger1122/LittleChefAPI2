@@ -113,13 +113,54 @@ async function runMongoShopItem(resp)
   resp.end()
 }
 
+async function runMongoGachaItem(resp)
+{
+  const dbconn = await MongoClient.connect(db_url, options);
+  const db = dbconn.db('game_db')
+ 
+  console.log('Connected to MongoDB')
+
+  const collection = db.collection('gacha_item')
+
+  const insertResult = await collection.find({}).toArray()
+  console.log( insertResult )
+
+  const findResult = await collection.find({}).toArray()
+  resp.write(JSON.stringify(findResult))
+  await dbconn.close()
+
+  resp.end()
+}
+
+async function runMongoGachaType(resp)
+{
+  const dbconn = await MongoClient.connect(db_url, options);
+  const db = dbconn.db('game_db')
+ 
+  console.log('Connected to MongoDB')
+
+  const collection = db.collection('gacha_type')
+
+  const insertResult = await collection.find({}).toArray()
+  console.log( insertResult )
+
+  const findResult = await collection.find({}).toArray()
+  resp.write(JSON.stringify(findResult))
+  await dbconn.close()
+
+  resp.end()
+}
+
+
 module.exports = 
 {
                     Comapnion : runMongoCompanion,
                     Currency : runMongoCurrency,
                     Item : runMongoItem,
                     Rarity : runMongoRarity,
-                    ShopItem : runMongoShopItem
+                    ShopItem : runMongoShopItem,
+                    GachaItem : runMongoGachaItem,
+                    GachaType : runMongoGachaType
 
 };
 

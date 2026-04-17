@@ -34,6 +34,16 @@ function onClientRequest(req,resp)
         mongo.Item(resp)
         return
     }
+    else if(req.method === 'GET' && pathname === '/api/mongo/gacha_item')
+    {
+        mongo.GachaItem(resp)
+        return
+    }
+    else if(req.method === 'GET' && pathname === '/api/mongo/gacha_type')
+    {
+        mongo.GachaType(resp)
+        return
+    }
 
 
     else
@@ -43,7 +53,10 @@ function onClientRequest(req,resp)
             'FOR CURRENCY [GET = /api/mongo/currency]',
             'FOR ITEM [GET = /api/mongo/item]',
             'FOR RARITY [GET = /api/mongo/rarity]',
-            'FOR SHOP ITEM [GET = /api/mongo/shop_item]'
+            'FOR SHOP ITEM [GET = /api/mongo/shop_item]',
+            'FOR GACHA ITEM [GET = /api/mongo/gacha_item]',
+            'FOR GACHA TYPE [GET = /api/mongo/gacha_type]'
+
         ]
         }))
 
