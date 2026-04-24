@@ -217,20 +217,16 @@ async function runMongoPlayerCompanion(resp)
     const dbconn = await MongoClient.connect(db_url, options);
     const db = dbconn.db('game_db');
 
-    console.log('Connected to MongoDB');
-
     const collection = db.collection('player_companion');
 
     const data = await collection.find({}).toArray();
 
     const result = data.map(x => ({
-        player_id: x.player_id,
-        companion_id: x.companion_id,
-        exp: x.exp,
-        is_equipped: x.is_equipped ? "True" : "False"
+        player_id: Number(x.player_id),
+        companion_id: Number(x.companion_id),
+        exp: Number(x.exp || 0),
+        is_equipped: x.is_equipped === "True" ? "True" : "False"
     }));
-
-    console.log(result);
 
     resp.write(JSON.stringify(result));
 

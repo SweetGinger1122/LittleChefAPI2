@@ -51,7 +51,9 @@ async function BuyCompanion(req, resp)
         const companionCollection = db.collection('companion')
         const playerCompanionCollection = db.collection('player_companion')
 
-        const player = await playerCollection.findOne({ player_id: player_id })
+        const player = await playerCollection.findOne({
+            player_id: player_id
+        })
 
         if (!player)
         {
@@ -63,7 +65,9 @@ async function BuyCompanion(req, resp)
             return
         }
 
-        const shopItem = await shopCollection.findOne({ item_id: item_id })
+        const shopItem = await shopCollection.findOne({
+            item_id: item_id
+        })
 
         if (!shopItem)
         {
@@ -75,7 +79,9 @@ async function BuyCompanion(req, resp)
             return
         }
 
-        const companion = await companionCollection.findOne({ item_id: item_id })
+        const companion = await companionCollection.findOne({
+            item_id: item_id
+        })
 
         if (!companion)
         {
@@ -115,23 +121,28 @@ async function BuyCompanion(req, resp)
             return
         }
 
+        // หักเงิน
         await playerCollection.updateOne(
             { player_id: player_id },
             { $inc: { candy: -price } }
         )
 
+        // เพิ่ม companion
         await playerCompanionCollection.insertOne({
             player_id: player_id,
             companion_id: companion.companion_id,
             exp: 0,
-            is_equipped: "False"
+            is_equipped: false
         })
 
-        const updatedPlayer = await playerCollection.findOne({ player_id: player_id })
+        const updatedPlayer = await playerCollection.findOne({
+            player_id: player_id
+        })
 
         resp.write(JSON.stringify({
             success: true,
             message: 'ซื้อสำเร็จ',
+
             player:
             {
                 player_id: updatedPlayer.player_id,
@@ -140,6 +151,7 @@ async function BuyCompanion(req, resp)
                 coin: updatedPlayer.coin,
                 candy: updatedPlayer.candy
             },
+
             companion:
             {
                 companion_id: companion.companion_id,
@@ -153,7 +165,7 @@ async function BuyCompanion(req, resp)
 
         resp.end()
     }
-    catch(err)
+    catch (err)
     {
         resp.write(JSON.stringify({
             success: false,
