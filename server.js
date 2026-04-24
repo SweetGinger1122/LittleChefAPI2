@@ -1,5 +1,9 @@
 const http = require('http')
 const mongo = require('./libs/mongo')
+const auth = require('./libs/auth')
+const gacha = require('./libs/gacha') 
+const upgrade = require('./libs/upgrade')
+const shop = require('./libs/shop')
 // ---------------------------------------------------------------
 const PORT = process.env.PORT || 9888
 // ---------------------------------------------------------------
@@ -11,7 +15,7 @@ function onClientRequest(req,resp)
 
     if(req.method === 'GET' && pathname === '/api/mongo/companion')
     {
-        mongo.Comapnion(resp)
+        mongo.Companion(resp)
         return
     }
     else if(req.method === 'GET' && pathname === '/api/mongo/currency')
@@ -31,7 +35,7 @@ function onClientRequest(req,resp)
     }
     else if(req.method === 'GET' && pathname === '/api/mongo/shop_item')
     {
-        mongo.Item(resp)
+        mongo.ShopItem(resp)
         return
     }
     else if(req.method === 'GET' && pathname === '/api/mongo/gacha_item')
@@ -44,7 +48,53 @@ function onClientRequest(req,resp)
         mongo.GachaType(resp)
         return
     }
+    else if(req.method === 'GET' && pathname === '/api/mongo/player')
+    {
+        mongo.PlayerList(resp)
+        return
+    }
+    else if(req.method === 'GET' && pathname === '/api/mongo/player_inventory')
+    {
+        mongo.PlayerInventory(resp)
+        return
+    }
+    else if(req.method === 'GET' && pathname === '/api/mongo/player_companion')
+    {
+        mongo.PlayerCompanion(resp)
+        return
+    }
+      else if(req.method === 'GET' && pathname === '/api/mongo/item_type')
+    {
+        mongo.ItemType(resp)
+        return
+    }
+//----------------------------------------------------------------------------
 
+    else if(req.method === 'POST' && pathname === '/api/auth/signup')
+    {
+        auth.SignUp(req, resp)
+        return
+    }
+    else if(req.method === 'POST' && pathname === '/api/auth/login')
+    {
+        auth.Login(req, resp)
+        return
+    }
+    else if(req.method === 'POST' && pathname === '/api/gacha/roll')
+    {
+        gacha.Roll(req, resp)
+        return
+    }
+    else if(req.method === 'POST' && pathname === '/api/companion/upgrade')
+    {
+        upgrade.UpgradeCompanion(req, resp)
+        return
+    }
+    else if(req.method === 'POST' && pathname === '/api/shop/buy')
+    {
+        shop.BuyCompanion(req, resp)
+        return
+    }
 
     else
     resp.write(JSON.stringify({messages: [
@@ -55,7 +105,16 @@ function onClientRequest(req,resp)
             'FOR RARITY [GET = /api/mongo/rarity]',
             'FOR SHOP ITEM [GET = /api/mongo/shop_item]',
             'FOR GACHA ITEM [GET = /api/mongo/gacha_item]',
-            'FOR GACHA TYPE [GET = /api/mongo/gacha_type]'
+            'FOR GACHA TYPE [GET = /api/mongo/gacha_type]',
+            'FOR PLAYER COMPANION [GET = /api/mongo/[player_companion]',
+            'FOR PLAYER INVENTORY [GET = /api/mongo/player_inventory]',
+            'FOR ITEM TYPE [GET = /api/mongo/item_type]',
+
+            'FOR LOG IN [POST = /api/auth/login]',
+            'FOR GACHA TYPE [POST = /api/auth/signup]',
+            'FOR GACHA ROLL [POST = /api/gacha/roll]',
+            'FOR COMPANION UPGRADE [POST = /api/companion/upgrade]',
+            'FOR BUY COMPANION  [POST = /api/shop/buy]'
 
         ]
         }))

@@ -74,6 +74,30 @@ async function runMongoItem(resp)
 
   resp.end()
 }
+async function runMongoItemType(resp)
+{
+  const dbconn = await MongoClient.connect(db_url, options);
+  const db = dbconn.db('game_db')
+ 
+  console.log('Connected to MongoDB')
+
+  const collection = db.collection('item_type')
+
+  const data = await collection.find({}).toArray()
+
+  const result = data.map(x => ({
+    item_type_id: x.item_type_id,
+    item_type_name: x.item_type_name,
+    can_keep_in_inventory: x.can_keep_in_inventory ? "True" : "False"
+  }))
+
+  console.log(result)
+
+  resp.write(JSON.stringify(result))
+  await dbconn.close()
+
+  resp.end()
+}
 
 async function runMongoRarity(resp)
 {
@@ -151,16 +175,95 @@ async function runMongoGachaType(resp)
   resp.end()
 }
 
+async function runMongoPlayerList(resp)
+{
+  const dbconn = await MongoClient.connect(db_url, options);
+  const db = dbconn.db('game_db')
+ 
+  console.log('Connected to MongoDB')
+
+  const collection = db.collection('player')
+
+  const insertResult = await collection.find({}).toArray()
+  console.log( insertResult )
+
+  const findResult = await collection.find({}).toArray()
+  resp.write(JSON.stringify(findResult))
+  await dbconn.close()
+
+  resp.end()
+}
+async function runMongoPlayerInventory(resp)
+{
+  const dbconn = await MongoClient.connect(db_url, options);
+  const db = dbconn.db('game_db')
+ 
+  console.log('Connected to MongoDB')
+
+  const collection = db.collection('player_inventory')
+
+  const insertResult = await collection.find({}).toArray()
+  console.log( insertResult )
+
+  const findResult = await collection.find({}).toArray()
+  resp.write(JSON.stringify(findResult))
+  await dbconn.close()
+
+  resp.end()
+}
+
+async function runMongoPlayerCompanion(resp)
+{
+    const dbconn = await MongoClient.connect(db_url, options);
+    const db = dbconn.db('game_db');
+
+    console.log('Connected to MongoDB');
+
+    const collection = db.collection('player_companion');
+
+    const data = await collection.find({}).toArray();
+
+    const result = data.map(x => ({
+        player_id: x.player_id,
+        companion_id: x.companion_id,
+        exp: x.exp,
+        is_equipped: x.is_equipped ? "True" : "False"
+    }));
+
+    console.log(result);
+
+    resp.write(JSON.stringify(result));
+
+    await dbconn.close();
+    resp.end();
+}
+
+async function connectDB()
+{
+  const dbconn = await MongoClient.connect(db_url, options)
+  const db = dbconn.db('game_db')
+
+  console.log('Connected to MongoDB')
+
+  return { dbconn, db }
+}
+
 
 module.exports = 
 {
-                    Comapnion : runMongoCompanion,
+                    connectDB : connectDB,
+                    Companion : runMongoCompanion,
                     Currency : runMongoCurrency,
                     Item : runMongoItem,
+                    ItemType : runMongoItemType,
                     Rarity : runMongoRarity,
                     ShopItem : runMongoShopItem,
                     GachaItem : runMongoGachaItem,
-                    GachaType : runMongoGachaType
+                    GachaType : runMongoGachaType,
+                    PlayerList : runMongoPlayerList,
+                    PlayerInventory : runMongoPlayerInventory,
+                    PlayerCompanion : runMongoPlayerCompanion,
+                    
 
 };
 
